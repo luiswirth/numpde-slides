@@ -1,14 +1,17 @@
 #import "setup.typ": *
 #show: this-template
 
-#titleslide
-
-#pagebreak()
-
 #let pathemph(a, b) = [
   #text(fill: white.darken(60%))[#a]#b
 ]
 
+#titleslide
+
+#pagebreak()
+
+#githubref
+
+#pagebreak()
 = Important links
 #v(1cm)
 
@@ -22,6 +25,41 @@ LehrFEM++ docs https://craffael.github.io/lehrfempp/ \
 = Setup / Problem 0-1
 #v(1cm)
 
+We'll be now basically solving Problem 0-1 from the homework PDF. \
+Which is setting up the lecture repository.
+
+Use a unix operating system: Linux or MacOS.
+
+There is no Code Expert, you'll have to solve the exercises locally on your
+computer.
+
+#pagebreak()
+== SSH setup
+#v(1cm)
+
+Check if you already have an SSH key already. \
+```sh
+ls ~/.ssh
+```
+Look for a filename that begins with `id`.
+
+#v(1cm)
+If you don't already have one: \
+Generate a SSH public-private-keypair and add it to the SSH agent.
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+#v(1.0cm)
+Add #emph[public] key (named `id_*.pub`) to #link("gitlab.math.ethz.ch").
+
+#pagebreak()
+= Cloning and CMake
+#v(1cm)
+
+
 Clone the NumPDE repository from the D-MATH GitLab.
 ```sh
 git clone git@gitlab.math.ethz.ch:ralfh/NPDERepo.git
@@ -34,7 +72,7 @@ mkdir build
 cmake -B build
 ```
 
-#v(1cm)
+#v(0.5cm)
 ...This will take a while, because the hunter package manager
 now fetches all dependencies (LehrFEM++, boost, GoogleTest, etc.)
 and builds them.
@@ -98,18 +136,17 @@ Add this line
 ```
 
 #pagebreak()
-== SSH setup
+== Can we commit and push?
 #v(1cm)
 
-Generate SSH key and add it to the SSH agent.
-```
-ssh-keygen -t ed25519 -C "your_email@example.com"
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-```
+No. We don't have rights to push on this repository. \
+Solution: Your own fork (remote copy of repository with you own).
 
-#v(0.5cm)
-Add #emph[public] key to GitHub and/or #link("gitlab.ethz.ch").
+Usually this is really easy: Fork button in GitLab. \
+But unfortunatly students have no right to create repository on D-MATH GitLab. \
+The fork button is grayed out.
+
+We need to create the fork manually...
 
 
 #pagebreak()

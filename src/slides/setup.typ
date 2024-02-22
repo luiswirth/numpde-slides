@@ -26,6 +26,20 @@
   ]
 ]
 
+#let githubref = [
+  #page(fill: white.darken(10%), margin: 0pt)[
+
+    #align(horizon, grid(
+      columns: (60%, 40%),
+      gutter: 0pt,
+      align(horizon, image("../res/github-banner.png")),
+      align(horizon, image("../res/github-qr.svg")),
+    ))
+    #v(1em)
+    #align(center, text(fill: black, size: 30pt, link("github.com/LU15W1R7H/numpde-notes")))
+  ]
+]
+
 
 #let this-template(doc) = [
   #set page(paper: "presentation-16-9")
