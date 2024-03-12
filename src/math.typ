@@ -22,6 +22,8 @@
 #let restr(a) = $lr(#a|)$
 #let openint(a,b) = $lr(\] #a, #b \[)$
 
+#let argmin = math.op("arg min", limits: true)
+#let argmax = math.op("arg max", limits: true)
 
 #let mesh = $cal(M)$
 #let nodes = $cal(N)$
