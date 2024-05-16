@@ -1,12 +1,12 @@
 #import "@preview/polylux:0.3.1": *
 #import "@preview/cetz:0.2.1"
 
-#import "../math.typ": *
-#import "../layout.typ": *
+#import "math.typ": *
+#import "layout.typ": *
 
 
 #let titleslide(nweek) = page(
-  background: image("../res/numpde-art0.jpg", width: 100%)
+  background: image("res/numpde-art0.jpg", width: 100%)
 )[
   #set text(black)
 
@@ -31,27 +31,34 @@
         Luis Wirth
       ]
       \
-      #link("mailto:luwirth@student.ethz.ch")
+      #link("mailto:luwirth@student.ethz.ch") \
+      #link("ethz.lwirth.com")
     ]
   ]
 ]
 
+  #import "@preview/codetastic:0.2.2": qrcode
+
+#let numpde-link-qr = [
+  #qrcode("http://numpde.lwirth.com")
+]
+
 #let githubref = page(
-  fill: white.darken(10%),
+  //fill: white.darken(10%),
+  fill: white,
 )[
   #set text(black)
 
-  #let height = 70%
   #align(horizon + center, grid(
     columns: (auto, auto),
     gutter: 0pt,
-    align(horizon, image("../res/github-banner.png", height: height)),
-    align(horizon, box(fill: white, image("../res/github-qr.svg", height: height))),
+    box(align(horizon, image("res/github-banner.png", height: 70%)), stroke: black)
   ))
 
   #v(1em)
-  #align(center, text(size: 40pt, link("github.com/LU15W1R7H/numpde-notes")))
+  #align(center, text(size: 40pt, link("http://numpde.lwirth.com")[numpde.lwirth.com]))
 ]
+
 
 
 #let this-template(doc) = [
